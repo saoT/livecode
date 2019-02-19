@@ -40,9 +40,9 @@ var products = [
 // entre la déclaration et l'appel
 function hello (argument) { // function hello (var argument = valeur passée à l'appel)
   // affiche la fonction callback
-  console.log(argument);
+  //console.log(argument);
   // affiche l'exécution de la fonction callback
-  console.log(argument());
+  //console.log(argument());
 }
 
 // cette fonction est passée en argument
@@ -65,13 +65,13 @@ hello(callback);
 
 // LES LOOPS ---------------------
 for (var i=0; i< products.length; i++) {
-  console.log(products[i].price);
-  console.log('a lindex :', i, 'jai la valeur:', products[i]);
+  //console.log(products[i].price);
+  //console.log('a lindex :', i, 'jai la valeur:', products[i]);
 }
 
 // en javascript des méthodes de tableaux existent
 products.forEach(function (product) {
-  console.log(product);
+  //console.log(product);
 });
 
 
@@ -116,10 +116,10 @@ if (topDeals) {
 var unPeuVrai = '';
 
 if (!!unPeuVrai) {
-  console.log('un peu vrai est vrai :', unPeuVrai);
+  //console.log('un peu vrai est vrai :', unPeuVrai);
 }
 else {
-  console.log('mensonge : un peu vrai est false :', unPeuVrai);
+  //console.log('mensonge : un peu vrai est false :', unPeuVrai);
 }
 
 // CONDITIONS TERNAIRES -------------------
@@ -148,12 +148,12 @@ newPrice = price > 10 ? price * 0.8 : price;
 
 // Pour tout element du DOM on peut definir des evenements
 document.onclick = function (e) {
-  console.log('j\'ai cliqué mon document');
+  //console.log('j\'ai cliqué mon document');
 }
 
 // On peutr selectionner un element donné
 var  parent = document.querySelector('#element');
-console.dir(parent);
+//console.dir(parent);
 
 // On peut aussi créer de nouveaux éléments
 var enfant = document.createElement('div');
@@ -168,20 +168,75 @@ enfant.innerHTML = 'Je suis du contenu dynamique';
 parent.appendChild(enfant);
 
 
+// ------------------ CLASS ----------------- //
+
+// ES 5
+// Le constructeur lui-meme = majuscule
+function VehiculeMotorise (moteur, nombreDeRoue, nombreDeSiege) {
+  // this
+  this.moteur = moteur;
+  this.nombreDeRoue = nombreDeRoue;
+  this.nombreDeSiege = nombreDeSiege;
+
+  this.start = function () {
+    console.log('je demarre mon moteur de puissance : ' + this.moteur);
+  }
+}
+
+// Pas constructeur, instance unique : singleton
+var auto = {
+  moteur : 95,
+  nombreDeRoue: 4,
+  nombreDeSiege: 4,
+}
+
+// Passe par un contructeur toujours pas de majuscule
+var auto = new VehiculeMotorise(95, 4, 4);
+var moto = new VehiculeMotorise(60, 2, 2);
+
+//console.log(auto);
+
+auto.start();
+//moto.start();
+
+
+// ES 6 ---------------------------------------------
+
+class VehiculeMotorise2 {
+  constructor (moteur, nombreDeRoue, nombreDeSiege) {
+    this.moteur = moteur;
+    this.nombreDeRoue = nombreDeRoue;
+    this.nombreDeSiege = nombreDeSiege;
+  }
+
+  methode2 () {
+    console.log(this.moteur);
+  }
+}
 
 
 
+var auto2 = new VehiculeMotorise2(75, 4, 2);
+var moto2 = new VehiculeMotorise2(15, 2, 1);
+
+console.log(auto2);
+
+auto2.methode2();
 
 
 
+class Product {
+  constructor (price, name, url, like) {
+    this.price = price....
+  }
+}
 
 
-
-
-
-
-
-
+var products = [
+  new Product (30, 'sac', 'urlimg', true),
+  new Product (10, 'shirt', 'urlimg', false),
+  new Product (50, 'shoes', 'urlimg', false)
+]
 
 
 
